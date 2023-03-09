@@ -1,30 +1,33 @@
-function purchaseBook(book, discountPercentage, taxPercentage) {
-    // Calculate the amount of discount
-    const discount = book.price * (discountPercentage / 100);
-  
-    // Calculate the price after discount
-    const priceAfterDiscount = book.price - discount;
-  
-    // Calculate the amount of tax
-    const tax = priceAfterDiscount * (taxPercentage / 100);
-  
-    // Calculate the price after tax
-    const priceAfterTax = priceAfterDiscount + tax;
-  
-    // Display all the parameters with additional data
-    console.log(`Book: ${book.title} by ${book.author}`);
-    console.log(`Price: ${book.price.toFixed(2)}`);
-    console.log(`Discount: ${discount.toFixed(2)} (${discountPercentage}%)`);
-    console.log(`Price after discount: ${priceAfterDiscount.toFixed(2)}`);
-    console.log(`Tax: ${tax.toFixed(2)} (${taxPercentage}%)`);
-    console.log(`Price after tax: ${priceAfterTax.toFixed(2)}`);
+const bookName = "Zettabyte Nicholas Indranto Hartono";
+const bookPrice = 100000;
+
+function price_discount(first_price, discount) {
+  return first_price-(first_price*discount/100);
+}
+
+function price_tax(first_price, tax) {
+  return first_price+(first_price*tax/100);
+}
+
+function book_purchasing(book_detail, percentage_discount, percentage_tax) {
+  let isDiscount;
+  if (percentage_discount !== 0) {
+    isDiscount = true;
+  } else {
+    isDiscount = false;
   }
-  
-  const book = {
-    title: "Buku Nicholas Indranto Hartono",
-    author: "Nicholas Indranto Hartono",
-    price: 10000,
-  };
-  
-  purchaseBook(book, 20, 5);
-  
+  if (isDiscount) {
+    let priceAfterDiscount = price_discount(bookPrice, percentage_discount);
+    return "-Amount of discount\t: " + percentage_discount + 
+           "\n-Price after discount\t: " + priceAfterDiscount + 
+           "\n-Amount of tax\t\t: " + percentage_tax + 
+           "\n-Price after tax\t: " + price_tax(priceAfterDiscount, percentage_tax);
+  } else {
+    return "-Amount of discount\t: " + percentage_discount + 
+           "\n-Price after discount\t: " + bookPrice + 
+           "\n-Amount of tax\t\t: " + percentage_tax + 
+           "\n-Price after tax\t: " + price_tax(bookPrice, percentage_tax);
+  }
+}
+
+console.log(book_purchasing(bookName, 25, 5));
