@@ -21,8 +21,8 @@ function purchaseBook(book, discountPercentage, taxPercentage) {
   }
   
   const book = {
-    title: "buku pemograman ray",
-    author: "ray",
+    title: "Buku Nicholas Indranto Hartono",
+    author: "Nicholas Indranto Hartono",
     price: 10000,
   };
   
