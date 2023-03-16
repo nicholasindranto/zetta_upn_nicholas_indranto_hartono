@@ -55,19 +55,24 @@ function book_purchasing(book_detail, percentage_discount, percentage_tax, amoun
                   "\n-Amount of tax\t\t\t: " + percentage_tax + 
                   "\n-Price after tax\t\t: " + price_tax(totalPrice, percentage_tax));
     }
-    for (let index = 0; index < term_of_credit; index++) credit[index] = price_credit(priceAfterTax, term_of_credit);
+    for (let index = 0; index < term_of_credit; index++) credit.push(price_credit(priceAfterTax, term_of_credit));
     console.log("\n\n---------------------------------");
     console.log("|Month\t\t|Term of Credit\t|");
     console.log("---------------------------------");
-    for (let index = 0; index < term_of_credit; index++) {
+    /*for (let index = 0; index < term_of_credit; index++) {
       console.log("|" + time_credit[index] + "\t|" + credit[index] +"\t\t|");
-    }
+    }*/
+    time_credit.forEach((time, index) => {
+      if (index < term_of_credit) {
+        console.log("|" + time + "\t|" + credit[index] +"\t\t|");
+      }
+    });
     console.log("---------------------------------");
   }
 }
 
-let amount = 7;
-let credit = 12;
+let amount = 10;
+let credit = 2;
 console.log("Buy book?\n");
 console.log(amount + " book " + bookName);
 console.log("How many times you want to pay as credit?\n");
@@ -75,6 +80,9 @@ if (credit <= 12) {
   console.log("I want to credit it " + credit + " times per month.\n");
   if (amount <= bookAmount) {
     console.log("Stock is available. Remaining stock : " + bookAmount);
-    book_purchasing(bookName, 25, 5, bookAmount, amount, credit);
+    //book_purchasing(bookName, 25, 5, bookAmount, amount, credit);
   } else console.log("\nBook out of Stock.\nRemaining stock : " + bookAmount + ".\n");
 } else console.log("You can only credit it within 12 times or 1 time per month.\n");
+
+console.assert("\n\nhalo ");
+console.assert(" apa kabar");
