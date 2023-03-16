@@ -59,9 +59,6 @@ function book_purchasing(book_detail, percentage_discount, percentage_tax, amoun
     console.log("\n\n---------------------------------");
     console.log("|Month\t\t|Term of Credit\t|");
     console.log("---------------------------------");
-    /*for (let index = 0; index < term_of_credit; index++) {
-      console.log("|" + time_credit[index] + "\t|" + credit[index] +"\t\t|");
-    }*/
     time_credit.forEach((time, index) => {
       if (index < term_of_credit) {
         console.log("|" + time + "\t|" + credit[index] +"\t\t|");
@@ -80,9 +77,6 @@ if (credit <= 12) {
   console.log("I want to credit it " + credit + " times per month.\n");
   if (amount <= bookAmount) {
     console.log("Stock is available. Remaining stock : " + bookAmount);
-    //book_purchasing(bookName, 25, 5, bookAmount, amount, credit);
+    book_purchasing(bookName, 25, 5, bookAmount, amount, credit);
   } else console.log("\nBook out of Stock.\nRemaining stock : " + bookAmount + ".\n");
 } else console.log("You can only credit it within 12 times or 1 time per month.\n");
-
-console.assert("\n\nhalo ");
-console.assert(" apa kabar");
